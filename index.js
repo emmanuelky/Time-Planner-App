@@ -20,8 +20,18 @@ const displayEntireMonth = () => {
 }
 
 const selectDay = (event) => {
-    const clickedDayNode = event.currentTarget
 
-    clickedDayNode.classList.add("select")
+    const currentSelectedDayNode = document.querySelector(".selected")
+    if (currentSelectedDayNode !== null) {
+        currentSelectedDayNode.classList.remove("selected")
+
+    }
+
+    const clickedDayNode = event.currentTarget
+    clickedDayNode.classList.add("selected")
+
+}
+
+const createMeeting = () => {
 
 }
