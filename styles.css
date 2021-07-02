@@ -1,0 +1,48 @@
+body{
+background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+body{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    color: #d6e4dd;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/*month & days*/
+#month-container {
+    border-style: solid;
+    border-width: 3px;
+    border-color: #dfd6d6;
+    padding: 12px;
+    border-radius: 50px;
+    display: inline-block;
+    width: 60%;
+}
+
+.day {
+    background-color: rgb(44, 68, 206);
+    display: inline-block;
+    width: 12%;
+    min-height: 64px;
+    text-align: center;
+    padding-top: 32px;
+    font-size: larger;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 8px;
+    margin: 3px;
+    border-color: #d1ce11;
+    color: whitesmoke;
+}
+
+.select{
+    background-color: rgb(211, 78, 60);
+}
