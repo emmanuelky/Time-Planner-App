@@ -81,16 +81,16 @@ h1 {
 }
 
 #meeting-time{
-    width: 150px;
+    width: 80px;
 }
 
 #meeting-description{
-    width: 300px;
+    width: 100px;
 }
 
 #meeting-creation input[type="button"]{
     margin-left: 10px;
-    width: 200px;
+    width: 100px;
     height: 54px;
     color: rgb(233, 222, 222);
     background-color: #2e8a22;

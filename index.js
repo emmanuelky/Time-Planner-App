@@ -1,4 +1,7 @@
+let meetingData = {}
+
 window.onload = function () {
+    readFromTheDisk()
     displayEntireMonth()
 }
 
@@ -19,6 +22,9 @@ const displayEntireMonth = () => {
     }
 }
 
+
+
+
 const selectDay = (event) => {
 
     const currentSelectedDayNode = document.querySelector(".selected")
@@ -29,18 +35,108 @@ const selectDay = (event) => {
 
     const clickedDayNode = event.currentTarget
     clickedDayNode.classList.add("selected")
-
+    refreshMeetingList()
 }
+
+
+
 
 const createMeeting = () => {
     const meetingTime = document.getElementById("meeting-time").value
     const meetingDescription = document.getElementById("meeting-description").value
-    const meeting = `${meetingTime} - ${meetingDescription}`
 
 
-    const meetListNode = document.getElementById("meetings-for-the-day")
+    let newMeeting = {
+        time: meetingTime,
+        description: meetingDescription
+    }
+    let meetingsForTheSelectedDay = getSelectedDayMeetings()
+    meetingsForTheSelectedDay.push(newMeeting)
+    saveToDisk()
 
-    const newMeetingNode = document.createElement("li")
-    newMeetingNode.innerHTML = meeting
-    meetListNode.appendChild(newMeetingNode)
+    refreshMeetingList()
+
+
+}
+
+
+
+
+
+const getCurrentlySelectedDay = function () {
+    return document.querySelector(".selected")
+}
+
+
+
+
+
+const getSelectedDayMeetings = function () {
+
+
+    let currentlySelectedDayNode = getCurrentlySelectedDay()
+
+
+    if (currentlySelectedDayNode === null) {
+        return null
+    }
+
+
+    const selectedDayId = currentlySelectedDayNode.innerText
+
+
+    let meetingsForTheDayArray = meetingData[selectedDayId]
+
+
+    if (meetingsForTheDayArray === undefined) {
+        meetingsForTheDayArray = []
+        meetingData[selectedDayId] = meetingsForTheDayArray
+    }
+
+    return meetingsForTheDayArray
+}
+
+
+
+
+
+const refreshMeetingList = function () {
+    const meetingListNode = document.getElementById("meetings-for-the-day")
+
+
+    meetingListNode.innerHTML = ""
+
+
+    const meetingsForTheSelectedDay = getSelectedDayMeetings()
+    const meetingsListNode = document.getElementById("meetings-for-the-day")
+
+    for (let meeting of meetingsForTheSelectedDay) {
+
+
+        const newMeetingListItemNode = document.createElement("li")
+        newMeetingListItemNode.innerText = `${meeting.time} - ${meeting.description}`
+
+
+        meetingsListNode.appendChild(newMeetingListItemNode)
+    }
+}
+
+
+
+
+const saveToDisk = function () {
+    let json = JSON.stringify(meetingData)
+    localStorage.setItem("Time-planner", json)
+}
+
+
+
+
+const readFromTheDisk = function () {
+    let json = localStorage.getItem("Time-planner")
+
+    if (json === null)
+        meetingData = {}
+    else
+        meetingData = JSON.parse(json)
 }
