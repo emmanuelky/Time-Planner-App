@@ -33,5 +33,14 @@ const selectDay = (event) => {
 }
 
 const createMeeting = () => {
+    const meetingTime = document.getElementById("meeting-time").value
+    const meetingDescription = document.getElementById("meeting-description").value
+    const meeting = `${meetingTime} - ${meetingDescription}`
 
+
+    const meetListNode = document.getElementById("meeting-list")
+
+    const newMeetingNode = document.createElement("li")
+    newMeetingNode.innerHTML = meeting
+    meetListNode.appendChild(newMeetingNode)
 }
