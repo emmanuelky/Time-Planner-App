@@ -38,7 +38,7 @@ const createMeeting = () => {
     const meeting = `${meetingTime} - ${meetingDescription}`
 
 
-    const meetListNode = document.getElementById("meeting-list")
+    const meetListNode = document.getElementById("meetings-for-the-day")
 
     const newMeetingNode = document.createElement("li")
     newMeetingNode.innerHTML = meeting
